@@ -2,8 +2,9 @@
 import { Popover, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
+import blogsData from '../../assets/fakedata/blogs.json'
+import heroBG1 from '../../assets/images/hero-bg-1.jpg'
 import BlogCart from '../../component/BlogCart/BlogCart'
-import heroBG1 from '../../images/hero-bg-1.jpg'
 
 const navigation = [
     { name: 'Product', href: '#' },
@@ -156,8 +157,7 @@ export default function Home() {
                 </div>
             </section>
             <div className='grid grid-cols-2 gap-4'>
-                <BlogCart></BlogCart>
-                <BlogCart></BlogCart>
+                {blogsData.map(blogs => <BlogCart blogs={blogs} key={blogs.id}></BlogCart>)}
             </div>
         </>
     )
