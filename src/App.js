@@ -13,8 +13,8 @@ import PostBlog from "./pages/PostBlog/PostBlog";
 function App() {
   return (
     <>
-      <Navbar></Navbar>
       <Router>
+        <Navbar></Navbar>
         <Switch>
           <Route path="/fullblog/:id">
             <FullBlog></FullBlog>
