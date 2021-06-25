@@ -6,9 +6,10 @@ const BlogCart = ({ blogs }) => {
     let history = useHistory();
 
     const handleClick = () => {
-        history.push(`/fullblog/${blogs.id}`);
+        history.push(`/fullblog/${blogs._id}`);
     }
-    console.log(blogs.id);
+
+    console.log(blogs._id);
 
     return (
         // <div>

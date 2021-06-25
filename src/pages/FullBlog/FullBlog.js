@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import blogsData from '../../assets/fakedata/blogs.json';
 
 const FullBlog = () => {
-    const { id } = useParams();
-    const singleData = blogsData[id]
-    console.log(singleData);
+    let { id } = useParams();
+    const [fullBlog, setFullBlog] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:4564/fullblog/${id}`)
+            .then(res => res.json())
+            .then(data => setFullBlog(...data))
+    }, [id])
+
+    console.log(fullBlog);
+    console.log('blogsId:', id);
     return (
         <>
-            <h1>{singleData.title}</h1>
-            <img src={singleData.images} alt="" />
-            <p>{singleData.description}</p>
+            <h1>{fullBlog.title}</h1>
+            <img src={`data:image/png;base64,${fullBlog.image.img}`} alt="" />
+            <p>{fullBlog.content}</p>
         </>
     );
 };

@@ -1,8 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Popover, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
-import blogsData from '../../assets/fakedata/blogs.json'
+import { Fragment, useEffect, useState } from 'react'
+// import blogsData from '../../assets/fakedata/blogs.json'
 import heroBG1 from '../../assets/images/hero-bg-1.jpg'
 import BlogCart from '../../component/BlogCart/BlogCart'
 
@@ -14,6 +14,18 @@ const navigation = [
 ]
 
 export default function Home() {
+
+    const [blogsData, setBlogsData] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:4564/allblogs')
+            .then(res => res.json())
+            .then(data => setBlogsData(data))
+    }, [])
+
+    console.log(blogsData);
+
+
     return (
         <>
             <div className="relative bg-white overflow-hidden">
@@ -106,18 +118,20 @@ export default function Home() {
                         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                             <div className="sm:text-center lg:text-left">
                                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                                    <span className="block xl:inline">Data to enrich your</span>{' '}
-                                    <span className="block text-indigo-600 xl:inline">online business</span>
+                                    <span className="block xl:inline">The Best Hobies</span>{' '}
+                                    <span style={{ color: '#f06a35' }} className="block text-indigo-600 xl:inline">Writing and Reading</span>
                                 </h1>
                                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                                    fugiat veniam occaecat fugiat aliqua.
+                                    {/* Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
+                                    fugiat veniam occaecat fugiat aliqua. */}
+                                    Improving your reading and writing skills also goes hand in hand with developing your communication skills. The more you read and write, the more you broaden your vocabulary and are able to articulate concepts accurately and more effectively to others. Increasing your ability to communicate also helps make you a better worker or student
                                 </p>
                                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                     <div className="rounded-md shadow">
                                         <a
                                             href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                                            style={{ background: '#f06a35' }}
                                         >
                                             Get started
                                         </a>
@@ -126,6 +140,7 @@ export default function Home() {
                                         <a
                                             href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                                            style={{ background: '#f06a354d', color: '#f06a35' }}
                                         >
                                             Live demo
                                         </a>
@@ -157,7 +172,7 @@ export default function Home() {
                 </div>
             </section>
             <div className='grid grid-cols-2 gap-4'>
-                {blogsData.map(blogs => <BlogCart blogs={blogs} key={blogs.id}></BlogCart>)}
+                {blogsData.map(blogs => <BlogCart blogs={blogs} key={blogs._id}></BlogCart>)}
             </div>
         </>
     )
