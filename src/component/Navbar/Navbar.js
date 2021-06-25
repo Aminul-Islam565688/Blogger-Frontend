@@ -44,7 +44,7 @@ export default function Navbar() {
                                     <img
                                         className="hidden lg:block w-auto h-8"
                                         // src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                                        src='https://www.pinclipart.com/picdir/middle/3-38139_blogger-blog-logo-png-transparent-background-clipart.png'
+                                        src='https://upload.wikimedia.org/wikipedia/commons/3/31/Blogger.svg'
                                         alt="Workflow"
                                     />
                                     <p>Blogger</p>
