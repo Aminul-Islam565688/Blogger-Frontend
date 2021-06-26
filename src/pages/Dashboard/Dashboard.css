@@ -1,0 +1,13 @@
+/* @media (max-width: 900px) {
+    #dasboardNavbar {
+      min-width: 31rem;
+    }
+  } */
+@media (max-width: 860px) {
+  #dasboardNavbar a {
+    flex-direction: row;
+  }
+  #navbarContainer {
+    display: none;
+  }
+}

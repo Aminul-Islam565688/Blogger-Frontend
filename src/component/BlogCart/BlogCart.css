@@ -1,0 +1,13 @@
+#blogCart {
+  min-width: 36rem;
+}
+@media (max-width: 900px) {
+  #blogCart {
+    min-width: 31rem;
+  }
+}
+@media (max-width: 860px) {
+  #blogCart {
+    min-width: 29rem;
+  }
+}
