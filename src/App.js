@@ -36,6 +36,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
+            <Route path="/home">
+              <Home />
+            </Route>
             <Route path="/">
               <Home />
             </Route>
