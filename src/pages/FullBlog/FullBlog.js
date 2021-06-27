@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import spinner from '../../assets/images/spinner.gif';
 
 const FullBlog = () => {
@@ -12,8 +12,6 @@ const FullBlog = () => {
             .then(res => setFullBlog(res))
     }, [id])
 
-    console.log(fullBlog);
-    console.log('blogsId:', id);
     return (
         <>
             {fullBlog.length === 0 && <img className='mx-auto my-9' src={spinner} alt="" />}
@@ -27,6 +25,15 @@ const FullBlog = () => {
                     <p className='text-gray-700 p-5 text-xl'>{blog.content}</p>
                 </div>)
             }
+            {fullBlog.length === 0 || <div div className="rounded-md">
+                <Link
+                    to="/"
+                    className="w-52 mx-auto my-5 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                    style={{ background: '#f06a35' }}
+                >
+                    Back to Home
+                </Link>
+            </div>}
         </>
     );
 };

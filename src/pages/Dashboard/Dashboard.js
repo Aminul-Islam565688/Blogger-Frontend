@@ -13,14 +13,22 @@ const Dashboard = () => {
             .then(data => setAllBlogs(data))
     }, [])
 
-    const handleDelete = (e, id) => {
-        fetch(`https://blooming-ravine-75179.herokuapp.com/deleteblog/${id}`, {
+    const handleDelete = (e, _id) => {
+        fetch(`https://blooming-ravine-75179.herokuapp.com/deleteblog/${_id}`, {
             method: 'DELETE',
         })
-            .then((res) => {
-                console.log(res);
+            .then((res) => res.json())
+            .then((data) => {
                 e.target.parentElement.parentElement.remove();
-            });
+                console.log(data);
+            })
+        // .then((deleteCount) => {
+        //     if (deleteCount) {
+        //         alert("Your service has been deleted.");
+        //     } else {
+        //         alert("Something unexpected happened. Please try again.");
+        //     }
+        // });
     }
 
     return (
